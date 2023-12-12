@@ -9,3 +9,5 @@ public interface UsuarioDAO {
 
     public boolean autenticar(Login usuarioInserido);
 }
+
+

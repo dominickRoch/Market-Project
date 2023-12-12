@@ -1,14 +1,16 @@
 package modelo;
 
+import java.sql.Date;
+
 
 public class Mercado {
     
-    public int id;
-    public String produto;
-    public Float preco; 
-    public String validade;
-    public int Peso;
-    public int Quantidade;
+    private int id;
+    private String produto;
+    private Float preco; 
+    private String validade;
+    private int Peso;
+    private int Quantidade;
 
     public int getId() {
         return id;
@@ -34,14 +36,6 @@ public class Mercado {
         this.preco = preco;
     }
 
-    public String getValidade() {
-        return validade;
-    }
-
-    public void setValidade(String validade) {
-        this.validade = validade;
-    }
-
     public int getPeso() {
         return Peso;
     }
@@ -57,6 +51,17 @@ public class Mercado {
     public void setQuantidade(int Quantidade) {
         this.Quantidade = Quantidade;
     }
+
+    public String getValidade() {
+        return validade;
+    }
+
+    public void setValidade(String validade) {
+        this.validade = validade;
+    }
+
+    
+    
 
     
         

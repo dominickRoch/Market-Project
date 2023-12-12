@@ -3,9 +3,9 @@ package controller;
 import View.telaLogin;
 import aplicacao.frmMenu;
 import dao.DAOFactory;
-import dao.UsuarioDAO;
 import javax.swing.JOptionPane;
 import modelo.Login;
+import dao.UsuarioDAO;
 
 public class frmLoginController {
     

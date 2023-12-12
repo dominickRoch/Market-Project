@@ -5,12 +5,12 @@ import aplicacao.frmMenu;
 import conexao.ConexaoMySQL;
 import controller.frmLoginController;
 import dao.DAOFactory;
-import dao.UsuarioDAO;
 import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import dao.UsuarioDAO;
 
 
 public class telaLogin extends javax.swing.JFrame {

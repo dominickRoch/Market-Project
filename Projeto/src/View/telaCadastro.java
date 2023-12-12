@@ -2,14 +2,14 @@ package View;
 
 import controller.frmCadastroController;
 import dao.DAOFactory;
-import dao.UsuarioDAO;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import modelo.Login;
+import dao.UsuarioDAO;
 
 
 public class telaCadastro extends javax.swing.JFrame {
-
+    
     private Login login;
     UsuarioDAO usuarioDAO = DAOFactory.criarUsuarioDAO();
     private final frmCadastroController controller;
