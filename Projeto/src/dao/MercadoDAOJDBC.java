@@ -2,9 +2,9 @@ package dao;
 
 import conexao.ConexaoMySQL;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import modelo.Mercado;
 
@@ -57,7 +57,38 @@ public class MercadoDAOJDBC implements MercadoDAO{
 
     @Override
     public List<Mercado> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       String select = "SELECT * FROM mercado";
+
+        List<Mercado> produtos = new ArrayList<Mercado>();
+
+        try {
+            conexao = ConexaoMySQL.getConexao();
+
+            sql = (PreparedStatement) conexao.prepareStatement(select);
+
+            rset = sql.executeQuery();
+
+            while (rset.next()) {
+
+                Mercado mercado = new Mercado();
+
+                mercado.setId(rset.getInt("id"));
+                mercado.setProduto(rset.getString("produto"));
+                mercado.setPreco(rset.getFloat("preco"));
+                mercado.setValidade(rset.getString("validade"));
+                mercado.setPeso(rset.getInt("peso"));
+                mercado.setQuantidade(rset.getInt("quantidade"));
+
+                produtos.add(mercado);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao();
+        }
+
+        return produtos;
     }
 
     @Override

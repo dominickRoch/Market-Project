@@ -1,11 +1,23 @@
 package aplicacao;
 
+import controller.frmListaController;
+import dao.DAOFactory;
+import dao.MercadoDAO;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import modelo.Mercado;
+
 
 public class frmLista extends javax.swing.JFrame {
 
-  
+    MercadoDAO mercadoDAO = DAOFactory.criarMercadoDAO();
+    private final DefaultTableModel modelo;
+    private final frmListaController controller;
+    
     public frmLista() {
         initComponents();
+        modelo = (DefaultTableModel) tblProdutos.getModel();
+        controller = new frmListaController(this);
     }
 
    
@@ -15,7 +27,7 @@ public class frmLista extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProdutos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -23,18 +35,28 @@ public class frmLista extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Produto", "Preço", "Validade", "Peso", "Quantidade"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblProdutos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tblProdutosFocusGained(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblProdutos);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 774, 559));
 
@@ -44,7 +66,7 @@ public class frmLista extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 571, 86, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 86, 40));
 
         jButton2.setText("VOLTAR");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(676, 570, 88, 39));
@@ -67,6 +89,21 @@ public class frmLista extends javax.swing.JFrame {
       
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void tblProdutosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblProdutosFocusGained
+        controller.listar();
+    }//GEN-LAST:event_tblProdutosFocusGained
+
+    public JTable getTblProdutos() {
+        return tblProdutos;
+    }
+
+    public void setTblProdutos(JTable tblProdutos) {
+        this.tblProdutos = tblProdutos;
+    }
+     
+    
+    
+   
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -74,6 +111,6 @@ public class frmLista extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblProdutos;
     // End of variables declaration//GEN-END:variables
 }
