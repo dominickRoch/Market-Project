@@ -16,7 +16,7 @@ public class MercadoDAOJDBC implements MercadoDAO{
     ResultSet rset = null;
 
     @Override
-    public int inserir(Mercado produto) {
+    public int inserir(Mercado produtos) {
         StringBuilder sqlBuilder = new StringBuilder();
         sqlBuilder
                 .append("INSERT INTO mercado(produto, preco, validade, peso, quantidade) ")
@@ -28,11 +28,11 @@ public class MercadoDAOJDBC implements MercadoDAO{
             conexao = ConexaoMySQL.getConexao();
 
             sql = (PreparedStatement) conexao.prepareStatement(insert);
-            sql.setString(1, produto.getProduto());
-            sql.setFloat(2, produto.getPreco());
-            sql.setString(3, produto.getValidade());
-            sql.setInt(4, produto.getPeso());
-            sql.setInt(5, produto.getQuantidade());
+            sql.setString(1, produtos.getProduto());
+            sql.setFloat(2, produtos.getPreco());
+            sql.setString(3, produtos.getValidade());
+            sql.setInt(4, produtos.getPeso());
+            sql.setInt(5, produtos.getQuantidade());
             
             linha = sql.executeUpdate();
             
@@ -46,13 +46,69 @@ public class MercadoDAOJDBC implements MercadoDAO{
     }
 
     @Override
-    public int editar(Mercado produto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int editar(Mercado produtos) {
+       
+        StringBuilder sqlBuilder = new StringBuilder();
+        sqlBuilder
+                .append("UPDATE mercado SET ")
+                .append("produto = ?,")
+                .append("preco = ?,")
+                .append("validade = ?,")
+                .append("peso = ?,")
+                .append("quantidade = ? ")
+                .append("WHERE id = ?");
+        
+        String update = sqlBuilder.toString();
+        
+        int linha = 0;
+        
+        try {
+            conexao = ConexaoMySQL.getConexao();
+
+            sql = (PreparedStatement) conexao.prepareStatement(update);
+            sql.setString(1, produtos.getProduto());
+            sql.setFloat(2, produtos.getPreco());
+            sql.setString(3, produtos.getValidade());
+            sql.setInt(4, produtos.getPeso());
+            sql.setInt(5, produtos.getQuantidade());
+            sql.setInt(6, produtos.getId());
+            
+            linha = sql.executeUpdate();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao();
+        }
+
+        return linha;
     }
 
     @Override
     public int apagar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        StringBuilder sqlBuilder = new StringBuilder();
+        sqlBuilder
+                .append("DELETE FROM mercado ")
+                .append("WHERE id = ?");
+        
+        String delete = sqlBuilder.toString();
+        
+        int linha = 0;
+        
+        try {
+            conexao = ConexaoMySQL.getConexao();
+
+            sql = (PreparedStatement) conexao.prepareStatement(delete);
+            sql.setInt(1, id);
+            linha = sql.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao();
+        }
+
+        return linha;
     }
 
     @Override

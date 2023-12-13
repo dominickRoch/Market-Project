@@ -34,6 +34,24 @@ public class frmProdutoController {
         } else {
             JOptionPane.showMessageDialog(null, "Erro ao inserir Produto.");
         }
-    }
+    }        
     
+    public void editar(Mercado mercado) {
+    
+        Mercado produtoEditado = new Mercado();
+        produtoEditado.setId(mercado.getId());
+        produtoEditado.setProduto(view.getTxtProduto().getText());
+        produtoEditado.setPreco(Float.parseFloat(view.getTxtPreco().getText()));
+        produtoEditado.setValidade(mercado.getValidade());
+        produtoEditado.setPeso(Integer.parseInt(view.getTxtPeso().getText()));
+        produtoEditado.setQuantidade(Integer.parseInt(view.getTxtQuantidade().getText()));
+
+        int linha = mercadoDAO.editar(produtoEditado);
+
+        if (linha > 0) {
+            JOptionPane.showMessageDialog(null, "Produto editado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao editar produto.");
+        }    
+    }    
 }

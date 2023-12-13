@@ -146,6 +146,7 @@ public class telaLogin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
@@ -153,12 +154,16 @@ public class telaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
-        controller.autenticar();       
+       boolean existe = controller.autenticar();
+        if(existe == true){
+            this.dispose();
+        }        
     }//GEN-LAST:event_btEntrarActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
        telaCadastro showCadastro = new telaCadastro();
-       showCadastro.setVisible(true);       
+       showCadastro.setVisible(true);   
+       this.dispose();
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     public JPasswordField getTxtSenha() {

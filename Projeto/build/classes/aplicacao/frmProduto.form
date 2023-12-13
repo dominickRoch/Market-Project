@@ -2,11 +2,12 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -41,29 +42,28 @@
               <Group type="102" attributes="0">
                   <EmptySpace pref="124" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btSalvar" min="-2" pref="84" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="lblCabecalho" min="-2" pref="223" max="-2" attributes="0"/>
+                      <Component id="lblQuantidade" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPeso" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtPeso" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtQuantidade" alignment="0" pref="80" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblCabecalho" min="-2" pref="223" max="-2" attributes="0"/>
-                              <Component id="lblQuantidade" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPeso" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtPeso" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtQuantidade" alignment="0" pref="80" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="lblValidade" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPreco" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
-                              <Component id="lblPreco" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtProduto" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
-                              <Component id="lblProduto" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="fmtValidade" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblValidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPreco" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
+                      <Component id="lblPreco" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtProduto" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
+                      <Component id="lblProduto" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="fmtValidade" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="btEditar" min="-2" pref="86" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btSalvar" min="-2" pref="84" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -93,7 +93,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtQuantidade" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="btSalvar" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btSalvar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="btEditar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -151,6 +154,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtQuantidade">
+        </Component>
+        <Component class="javax.swing.JButton" name="btEditar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="EDITAR"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEditarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

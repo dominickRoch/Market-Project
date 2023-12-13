@@ -17,7 +17,7 @@ public class frmLoginController {
         this.view = view;
     }
     
-    public void autenticar(){
+    public boolean autenticar(){
         
        //Buscar um Usuario da View
         Login usuarioInserido = new Login();
@@ -30,7 +30,8 @@ public class frmLoginController {
             frmMenu showMenu = new frmMenu();
             showMenu.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "Usuário ou Senha inválidos!");
-        }              
+            JOptionPane.showMessageDialog(null, "Usuário ou Senha inválidos!");            
+        }
+       return existe;
     }
 }
