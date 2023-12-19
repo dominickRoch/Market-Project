@@ -6,21 +6,19 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import modelo.Login;
 import dao.UsuarioDAO;
-
+import javax.swing.JOptionPane;
 
 public class telaCadastro extends javax.swing.JFrame {
-    
+
     private Login login;
     UsuarioDAO usuarioDAO = DAOFactory.criarUsuarioDAO();
     private final frmCadastroController controller;
-    
+
     public telaCadastro() {
-        initComponents();   
+        initComponents();
         controller = new frmCadastroController(this);
     }
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -137,11 +135,17 @@ public class telaCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        
+
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-      controller.inserir();
+        if (txtSenha.getText().equals(txtRepetir.getText())) {
+            controller.inserir();
+            this.dispose();
+        } else{
+            JOptionPane.showMessageDialog(this, "Senha diferente");
+        }
+
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void txtRepetirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRepetirActionPerformed
@@ -168,8 +172,7 @@ public class telaCadastro extends javax.swing.JFrame {
         this.txtUsuario = txtUsuario;
     }
 
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btSalvar;
     private javax.swing.JLabel lblCadastro;

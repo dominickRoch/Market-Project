@@ -69,6 +69,12 @@ public class frmProduto extends javax.swing.JFrame {
 
         lblPeso.setText("Peso:");
 
+        try {
+            fmtValidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         lblCabecalho.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblCabecalho.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCabecalho.setText("CADASTRO PRODUTO");
@@ -170,6 +176,7 @@ public class frmProduto extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         controller.editar(mercado);
+        this.dispose();
     }//GEN-LAST:event_btEditarActionPerformed
 
     public JFormattedTextField getFmtValidade() {

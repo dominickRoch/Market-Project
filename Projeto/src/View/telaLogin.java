@@ -48,7 +48,7 @@ public class telaLogin extends javax.swing.JFrame {
         lblConexao = new javax.swing.JLabel();
         lblPergunta = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         lblLogin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -163,7 +163,6 @@ public class telaLogin extends javax.swing.JFrame {
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
        telaCadastro showCadastro = new telaCadastro();
        showCadastro.setVisible(true);   
-       this.dispose();
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     public JPasswordField getTxtSenha() {
