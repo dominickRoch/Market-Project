@@ -21,3 +21,4 @@ create table mercado(
 
 alter table mercado
 modify column validade date;
+

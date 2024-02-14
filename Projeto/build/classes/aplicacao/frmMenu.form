@@ -3,9 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[620, 540]"/>
-    </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -46,9 +43,9 @@
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="btInserir" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="97" max="-2" attributes="0"/>
+                  <Component id="btExibir" min="-2" pref="97" max="-2" attributes="0"/>
                   <EmptySpace pref="230" max="32767" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="98" max="-2" attributes="0"/>
+                  <Component id="btComprar" min="-2" pref="98" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -59,8 +56,8 @@
                   <EmptySpace pref="479" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btInserir" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="btExibir" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="btComprar" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
@@ -76,18 +73,21 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btInserirActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btExibir">
           <Properties>
             <Property name="text" type="java.lang.String" value="EXIBIR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btExibirActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btComprar">
           <Properties>
             <Property name="text" type="java.lang.String" value="COMPRAR"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btComprarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
