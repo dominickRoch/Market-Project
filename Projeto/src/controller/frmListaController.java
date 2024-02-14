@@ -9,16 +9,16 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Mercado;
 
 
-public class frmListaController {
-    private Mercado mercado;
+public class frmListaController {    
     MercadoDAO mercadoDAO = DAOFactory.criarMercadoDAO();
     private frmLista view;
-    private final DefaultTableModel modelo;
+    private DefaultTableModel modelo;
     
     public frmListaController(frmLista view) {
         this.view = view;
         modelo = (DefaultTableModel) view.getTblProdutos().getModel();
     }
+    
     
     public void listar(){
               
@@ -34,17 +34,22 @@ public class frmListaController {
     }
     
     public void apagar(){
-        try {
+        try {            
             Integer id = (Integer) modelo.getValueAt(view.getTblProdutos().getSelectedRow(), 0);
-
-            int linha = mercadoDAO.apagar(id);
-            
-            if (linha > 0) {
-                modelo.removeRow(view.getTblProdutos().getSelectedRow());
-                JOptionPane.showMessageDialog(null, "Item excluído com sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Erro ao excluir.");
+            Object[] opcao = {"Sim", "Não"};
+            int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Deseja realmente apagar?", "Aviso",
+                                                                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, opcao, opcao[0]);
+            if(opcaoSelecionada == 0){
+               int linha = mercadoDAO.apagar(id); 
+                    if (linha > 0) {
+                        modelo.removeRow(view.getTblProdutos().getSelectedRow());
+                        JOptionPane.showMessageDialog(null, "Item excluído com sucesso!");
+                    }else{
+                         JOptionPane.showMessageDialog(null, "Erro ao excluir.");
+                }
             }
+                        
+            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Por favor, selecionar uma linha da tabela");
@@ -75,6 +80,18 @@ public class frmListaController {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Por favor, selecionar uma linha da tabela");
         }
+    }
+    
+    public void consultar(){
+              modelo.getDataVector().clear();        
+        try {
+            for (Mercado mercado : mercadoDAO.consultar(view.getTxtConsultar().getText())) {
+                modelo.addRow(new Object[]{mercado.getId(), mercado.getProduto(), mercado.getPreco(),
+                              mercado.getValidade(), mercado.getPeso(), mercado.getQuantidade()});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Produto não encontrado");
+        }    
     }
    
 }

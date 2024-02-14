@@ -10,4 +10,8 @@ public class DAOFactory {
     public static MercadoDAO criarMercadoDAO(){
         return new MercadoDAOJDBC();
     }
+    
+    public static CompraDAO criarCompraDAO(){
+        return new CompraDAOJDBC();
+    }
 }

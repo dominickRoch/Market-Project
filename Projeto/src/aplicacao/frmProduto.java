@@ -19,10 +19,12 @@ public class frmProduto extends javax.swing.JFrame {
     public frmProduto(Mercado mercado) {
         initComponents();
         controller = new frmProdutoController(this);
-        
+        btEditar.setVisible(false);
         this.mercado = mercado;
         
         if (this.mercado != null) {
+            btEditar.setVisible(true);
+            btSalvar.setVisible(false);
             txtProduto.setText(this.mercado.getProduto());
             txtPreco.setText(Float.toString(this.mercado.getPreco()));
             fmtValidade.setText(this.mercado.getValidade());
@@ -33,7 +35,6 @@ public class frmProduto extends javax.swing.JFrame {
     }
     
     
-
     frmProduto(Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -60,24 +61,49 @@ public class frmProduto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setLayout(null);
+
+        lblProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblProduto.setText("Produto:");
+        jPanel1.add(lblProduto);
+        lblProduto.setBounds(120, 110, 70, 20);
+        jPanel1.add(txtProduto);
+        txtProduto.setBounds(120, 136, 280, 20);
 
+        lblPreco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPreco.setText("Preço:");
+        jPanel1.add(lblPreco);
+        lblPreco.setBounds(120, 162, 60, 20);
+        jPanel1.add(txtPreco);
+        txtPreco.setBounds(120, 190, 90, 20);
 
+        lblValidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblValidade.setText("Validade:");
+        jPanel1.add(lblValidade);
+        lblValidade.setBounds(120, 220, 60, 17);
 
+        lblPeso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPeso.setText("Peso:");
+        jPanel1.add(lblPeso);
+        lblPeso.setBounds(120, 270, 50, 17);
+        jPanel1.add(txtPeso);
+        txtPeso.setBounds(120, 290, 100, 20);
 
         try {
             fmtValidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jPanel1.add(fmtValidade);
+        fmtValidade.setBounds(120, 240, 60, 20);
 
-        lblCabecalho.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblCabecalho.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblCabecalho.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCabecalho.setText("CADASTRO PRODUTO");
+        jPanel1.add(lblCabecalho);
+        lblCabecalho.setBounds(160, 40, 223, 52);
 
         btSalvar.setText("SALVAR");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,85 +111,26 @@ public class frmProduto extends javax.swing.JFrame {
                 btSalvarActionPerformed(evt);
             }
         });
+        jPanel1.add(btSalvar);
+        btSalvar.setBounds(420, 440, 84, 31);
 
+        lblQuantidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblQuantidade.setText("Quantidade:");
+        jPanel1.add(lblQuantidade);
+        lblQuantidade.setBounds(120, 320, 90, 17);
+        jPanel1.add(txtQuantidade);
+        txtQuantidade.setBounds(120, 340, 80, 20);
 
-        btEditar.setText("EDITAR");
+        btEditar.setText("SALVAR");
         btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEditarActionPerformed(evt);
             }
         });
+        jPanel1.add(btEditar);
+        btEditar.setBounds(420, 440, 86, 31);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(124, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblQuantidade)
-                    .addComponent(lblPeso)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtPeso, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtQuantidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
-                    .addComponent(lblValidade)
-                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPreco)
-                    .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProduto)
-                    .addComponent(fmtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(137, 137, 137))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addComponent(lblCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(lblProduto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPreco)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblValidade)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fmtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPeso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblQuantidade)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 490));
 
         pack();
         setLocationRelativeTo(null);
@@ -175,8 +142,10 @@ public class frmProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        btEditar.setVisible(true);
         controller.editar(mercado);
         this.dispose();
+      
     }//GEN-LAST:event_btEditarActionPerformed
 
     public JFormattedTextField getFmtValidade() {

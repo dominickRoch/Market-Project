@@ -9,6 +9,7 @@ public interface MercadoDAO {
     public int editar(Mercado mercado);
     public int apagar(int id);
     public List<Mercado> listar();
-    public Mercado encontrar(int id);
+    public Mercado encontrar(String produto);  
+    public List<Mercado> consultar(String item);
     
 }
